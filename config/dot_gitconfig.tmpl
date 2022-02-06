@@ -3,6 +3,9 @@
   name = {{ .full_name | quote }}
   signingkey = {{ .git.signing_key | quote }}
 
+[core]
+  ignorecase = false
+  
 [credential]
   helper = osxkeychain
 
