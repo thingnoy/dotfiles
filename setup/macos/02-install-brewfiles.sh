@@ -48,5 +48,4 @@ cask "google-chrome"
 cask "openvpn-connect"
 BREWS
 
-brew bundle dump --file=${HOME}/Downloads/Brewfile-{{ .hostname }} --force
-
+echo "🟣 brewfile is installed."
