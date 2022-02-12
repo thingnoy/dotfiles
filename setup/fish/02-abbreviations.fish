@@ -24,12 +24,12 @@ abbr -a gst 'git status'
 
 # exa abbreviations.
 abbr -a tree 'exa --tree'
-abbr -a l 'exa --color-scale --group-directories-first --header --long --time-style=long-iso'
-abbr -a ll 'l --accessed --created --modified --group'
-abbr -a la 'l --accessed --sort=acc'   # oldest accessed on top
-abbr -a lc 'l --created --sort=cr'     # oldest created on top
-abbr -a lm 'l --modified --sort=mod'   # oldest modfied on top
-abbr -a ls 'l --sort=size'  
+abbr -a ls 'exa'                                                         # ls
+abbr -a l 'exa -lbF --git'                                               # list, size, type, git
+abbr -a ll 'exa -lbGF --git'                                             # long list
+abbr -a llm 'exa -lbGF --git --sort=modified'                            # long list, modified date sort
+abbr -a la 'exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+abbr -a lx 'exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
 
 # tmux abbreviations.
 abbr -a ta 'tmux attach'

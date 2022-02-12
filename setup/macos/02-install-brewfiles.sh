@@ -31,6 +31,7 @@
 # brew "wget"
 # brew "zsh"
 # brew "nvm"
+# brew "fish"
 
 # cask "1password"
 # cask "daisydisk"
@@ -41,7 +42,6 @@
 # cask "hey"
 # cask "obsidian"
 # cask "slack"
-# cask "vanilla"
 # cask "visual-studio-code"
 # cask "zoom"
 # cask "google-chrome"
