@@ -1,3 +1,6 @@
+export PATH="/bin:/sbin:/opt/homebrew/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:$PATH"
+export GPG_TTY=$(tty)
+
 # Initialize starship prompt for the bash shell.
 if command -v starship &> /dev/null
 then
