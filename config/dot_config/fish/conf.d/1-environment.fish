@@ -37,6 +37,7 @@ set -gx PATH \
   /sbin \
   /opt/X11/bin \
   /opt/homebrew/bin \
+  /opt/homebrew/sbin \
   /usr/bin \
   /usr/sbin \
   /usr/local/bin \
@@ -44,3 +45,6 @@ set -gx PATH \
   /usr/local/opt/coreutils/libexec/gnubin \
   /usr/libexec \
   /Library/Apple/usr/bin
+
+# fix git sign commit
+set -gx GPG_TTY (tty)
