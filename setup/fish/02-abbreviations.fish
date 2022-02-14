@@ -10,6 +10,7 @@ abbr -a cls clear
 # git abbreviations.
 abbr -a g git
 abbr -a gaa 'git add --all'
+abbr -a gba 'git branch -a'
 abbr -a gc 'git commit'
 abbr -a gco 'git checkout'
 abbr -a gcm 'git checkout $(git_main_branch)'
@@ -24,12 +25,13 @@ abbr -a gst 'git status'
 
 # exa abbreviations.
 abbr -a tree 'exa --tree'
-abbr -a ls 'exa'                                                         # ls
-abbr -a l 'exa -lbF --git'                                               # list, size, type, git
-abbr -a ll 'exa -lbGF --git'                                             # long list
-abbr -a llm 'exa -lbGF --git --sort=modified'                            # long list, modified date sort
-abbr -a la 'exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
-abbr -a lx 'exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+abbr -a ls 'exa'                                                          # ls
+abbr -a l 'exa -lbF --git'                                                # list, size, type, git
+abbr -a ll 'exa -lbGF --git'                                              # long list
+abbr -a llm 'exa -lbGF --git --sort=modified'                             # long list, modified date sort
+abbr -a la 'exa -la --git --sort=modified'                                # list all, long list, modified date sort
+abbr -a lla 'exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+abbr -a llx 'exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
 
 # tmux abbreviations.
 abbr -a ta 'tmux attach'
