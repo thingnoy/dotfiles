@@ -1,15 +1,9 @@
 {{- $name := "Supasai Haplakhon" -}}
 {{- $email := "boyskypart@gmail.com" -}}
-{{- $github_user := "thingnoy" -}}
+{{- $github_user := "supasai(boy)" -}}
 {{- $asdf_version := "0.9.0" -}}
 {{- $computer_name := default "thingnoy-computer-name" (env "CM_computer_name") -}}
 {{- $gpg_recipient := "BCF936170416825E804879138D8EAD7DDCC6A817" -}}
-{{- $is_codespace := false }}
-{{- $nas_mount_path := default "~/mnt/nas" (env "NAS_PATH") -}}
-
-{{- if (eq .chezmoi.username "codespace") }}
-{{-   $is_codespace = true }}
-{{- end }}
 
 {{- if (env "ASK") }}
 {{-   $computer_name = promptString "Computer Name" $computer_name -}}
@@ -20,21 +14,12 @@
 {{-   $gpg_recipient = promptString "GPG Recipient" $gpg_recipient -}}
 {{- end }}
 
-{{- $delta_is_not_installed := true }}
-{{- if (contains "delta" (output "bash" "-c" "command -v delta || true")) }}
-{{-   $delta_is_not_installed = false }}
-{{- end }}
-
 data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   github_user: {{ $github_user | quote }}
   asdf_version: {{ $asdf_version | quote }}
   computer_name: {{ $computer_name | quote }}
-  nas_mount_path: {{ $nas_mount_path | quote }}
-  flags:
-    delta_is_not_installed: {{ $delta_is_not_installed }}
-    is_codespace: {{ $is_codespace }}
 
 encryption: gpg
 gpg:
