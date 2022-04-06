@@ -1,0 +1,53 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/sh
+
+# Install asdf plugins
+
+source /tmp/chezmoi-utils.sh
+
+printf "${green}[31 - macOS] ${reset}"
+{{- if or (lt 31 (atoi (env "SCRIPTS_START_AT"))) (env "SKIP_ASDF_PLUGINS") }}
+echo "Skip installing asdf plugins"
+exit 0
+{{ else }}
+echo "Install asdf plugins"
+{{- end }}
+
+{{ $plugins := dict
+  "nodejs"     "lts-gallium"
+  "pnpm"       "6.23.3"
+  "ruby"       "3.0.3"
+  "yarn"       "1.22.17"
+  "rust"       "latest"
+  "golang"     "latest"
+}}
+
+# Skip Node.js signature check
+export NODEJS_CHECK_SIGNATURES=no
+
+# Add plugins & install versions
+{{ range (keys $plugins) -}}
+  {{- $key := . }}
+  {{- $val := get $plugins $key }}
+
+  asdf plugin-add {{ $key }} || true
+
+  {{- if not (eq $val "None") }}
+    asdf install {{ $key }} {{ $val }} || true
+    asdf global {{ $key }} {{ $val }} || true
+  {{- end -}}
+{{ end -}}
+
+# -- Packages -- #
+
+{{ $rubyPackages := list
+  "tmuxinator"
+}}
+
+{{ range sortAlpha $rubyPackages }}
+  gem install {{ . }}
+{{ end -}}
+
+asdf reshim
+
+{{ end -}}
