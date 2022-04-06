@@ -16,6 +16,8 @@ abbr gd "git diff"
 abbr gb "git branch"
 abbr gaa "git add --all"
 abbr gcd "git checkout develop"
+abbr gst "git status -s -b && git log --oneline -n5 2>/dev/null || :"
+abbr gs "git status -sb"
 
 # Misc
 abbr - "cd -"

@@ -16,5 +16,4 @@ apply: ## Run chezmoi apply
 	@chezmoi apply
 
 macos: ## Run macos script
-	chezmoi cat ~/.chezmoi_scripts/98-macos-preferences.sh | bash
 	chezmoi cat ~/.chezmoi_scripts/99-macos-name.zsh | zsh

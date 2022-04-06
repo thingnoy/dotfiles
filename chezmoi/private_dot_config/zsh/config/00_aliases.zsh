@@ -16,6 +16,8 @@ alias gd='git diff'
 alias gb='git branch'
 alias gaa="git add --all"
 alias gcd="git checkout develop"
+alias gst="git status -s -b && git log --oneline -n5 2>/dev/null || :"
+alias gs="git status -sb"
 
 # Misc
 alias -- -='cd -'
