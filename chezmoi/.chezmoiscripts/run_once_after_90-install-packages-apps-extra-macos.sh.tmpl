@@ -19,9 +19,7 @@ set -eufo pipefail
 
 {{ $brews := list -}}
 
-{{ $casks := list
-  "setapp"
--}}
+{{ $casks := list -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF || :
 {{ range ($taps | sortAlpha | uniq) -}}

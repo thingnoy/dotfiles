@@ -24,7 +24,6 @@ To change the data or script, `chezmoi cd`, edit them, then run `chezmoi apply`.
 ## Manual tasks (One-time per machine)
 
 - macOS
-  - Run Setapp installer manually after the `brew` script is run.
   - Login to App Store before running (If not `mas` will skip installation and open the App Store for you)
 
 ## Features
