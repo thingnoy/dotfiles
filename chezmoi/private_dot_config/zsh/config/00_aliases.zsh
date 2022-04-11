@@ -29,6 +29,7 @@ f() {
 alias ip='curl ifconfig.me'
 alias l='ls -la'
 alias reload='exec $SHELL -l'
+alias work='cd ~/work'
 
 # Unused aliases
 ua() {
