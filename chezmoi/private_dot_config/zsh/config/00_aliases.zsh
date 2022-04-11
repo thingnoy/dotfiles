@@ -11,7 +11,7 @@ alias brewx='ax /usr/local/bin/brew'
 # Git
 alias gp="git push"
 alias gl="git pull"
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glog="git graph"
 alias gd='git diff'
 alias gb='git branch'
 alias gaa="git add --all"

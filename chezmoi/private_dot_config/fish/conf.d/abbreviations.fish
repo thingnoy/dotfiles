@@ -11,7 +11,7 @@ abbr brewx "ax /usr/local/bin/brew"
 # Git
 abbr gp "git push"
 abbr gl "git pull"
-abbr glog "git log --graph --pretty=format:"%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset" --abbrev-commit --date=relative"
+abbr glog "git graph"
 abbr gd "git diff"
 abbr gb "git branch"
 abbr gaa "git add --all"
