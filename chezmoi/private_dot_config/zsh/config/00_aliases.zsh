@@ -13,24 +13,26 @@ alias gp="git push"
 alias gl="git pull"
 alias glog="git graph"
 alias gd='git diff'
-alias gb='git branch'
 alias gaa="git add --all"
 alias gcd="git checkout develop"
 alias gst="git status -s -b && git log --oneline -n5 2>/dev/null || :"
 alias gs="git status -sb"
+alias gb="git branch"
+alias gba="git branch -a"
 
 # Misc
-alias -- -='cd -'
+alias -- -="cd -"
 alias cl="clear"
 f() {
 	local dir
 	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzy) && cd "$dir"
 }
-alias ip='curl ifconfig.me'
-alias l='ls -la'
-alias reload='exec $SHELL -l'
-alias work='cd ~/work'
-alias dev='cd ~/dev'
+alias ip="curl ifconfig.me"
+alias l="ls -la"
+alias reload="exec $SHELL -l"
+alias work="cd ~/work"
+alias dev="cd ~/dev"
+alias active-sims="xcrun simctl list 'devices' 'booted'"
 
 # Unused aliases
 ua() {
