@@ -89,10 +89,6 @@ function prompt_my_arch_check() {
   fi
 }
 
-music() {
-  sh -c "nohup sh -c 'kitty --single-instance --session ~/.config/kitty/sessions/mpd' > /tmp/mpd_nohup.out 2>&1 &"
-}
-
 url_encode() {
   awk 'BEGIN {
       for (n = 0; n < 125; n++) {
