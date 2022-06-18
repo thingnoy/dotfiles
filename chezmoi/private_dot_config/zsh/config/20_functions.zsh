@@ -35,11 +35,6 @@ timezsh() {
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
 
-# use_zinit() {
-#   cp ~/.zinit_rc ~/.zshrc
-#   exec $SHELL -l
-# }
-
 use_omz() {
   cp ~/.omz_rc ~/.zshrc
   exec $SHELL -l

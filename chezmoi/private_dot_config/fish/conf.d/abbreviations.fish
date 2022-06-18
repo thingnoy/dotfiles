@@ -15,10 +15,12 @@ abbr glog "git graph"
 abbr gd "git diff"
 abbr gaa "git add --all"
 abbr gcd "git checkout develop"
+abbr gcm "git checkout main"
 abbr gst "git status -s -b && git log --oneline -n5 2>/dev/null || :"
 abbr gs "git status -sb"
 abbr gb "git branch"
 abbr gba "git branch -a"
+abbr gcmsg "git commit -m"
 
 # Misc
 abbr - "cd -"

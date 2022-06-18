@@ -15,10 +15,12 @@ alias glog="git graph"
 alias gd='git diff'
 alias gaa="git add --all"
 alias gcd="git checkout develop"
+alias gcm="git checkout main"
 alias gst="git status -s -b && git log --oneline -n5 2>/dev/null || :"
 alias gs="git status -sb"
 alias gb="git branch"
 alias gba="git branch -a"
+alias gcmsg="git commit -m"
 
 # Misc
 alias -- -="cd -"
