@@ -21,6 +21,7 @@ alias gs="git status -sb"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gcmsg="git commit -m"
+alias gco="git checkout"
 
 # Misc
 alias -- -="cd -"

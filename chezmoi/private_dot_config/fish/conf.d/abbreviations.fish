@@ -21,6 +21,7 @@ abbr gs "git status -sb"
 abbr gb "git branch"
 abbr gba "git branch -a"
 abbr gcmsg "git commit -m"
+abbr gco "git checkout"
 
 # Misc
 abbr - "cd -"
