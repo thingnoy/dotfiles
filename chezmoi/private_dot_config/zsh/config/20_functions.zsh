@@ -67,3 +67,5 @@ function prompt_my_arch_check() {
     p10k segment -t "x86" -b 232 -f 7
   fi
 }
+
+function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }

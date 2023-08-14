@@ -10,31 +10,6 @@ export PATH="$PATH:$(yarn global bin)"
 # Chezmoi cached variables
 export CM_computer_name={{ .computer_name }}
 
-
-
-
-
-
-# Autoload functions.
-autoload -Uz zmv
-
-# Define functions and completions.
-function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
-compdef _directories md
-
-# Define named directories: ~w <=> Windows home directory on WSL.
-[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
-
-# Define aliases.
-alias tree='tree -a -I .git'
-
-# Add flags to existing aliases.
-alias ls="${aliases[ls]:-ls} -A"
-
-# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
-setopt glob_dots     # no special treatment for file names with a leading dot
-setopt no_auto_menu  # require an extra TAB press to open the completion menu
-
 {{ if (eq .chezmoi.os "darwin" ) -}}
 # Mac specific config
 if [[ "$(uname -m)" == "arm64" ]]; then
@@ -73,8 +48,9 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh --hook prompt)"
 fi
 
-z4h source $HOME/.config/zsh/config/00_aliases.zsh
-z4h source $HOME/.config/zsh/config/10_options.zsh
-z4h source $HOME/.config/zsh/config/20_functions.zsh
+[[ -f $HOME/.config/zsh/config/00_aliases.zsh ]] && source $HOME/.config/zsh/config/00_aliases.zsh
+[[ -f $HOME/.config/zsh/config/10_options.zsh ]] && source $HOME/.config/zsh/config/10_options.zsh
+[[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
-z4h source $HOME/.asdf/asdf.sh
+[[ -f $HOME/.asdf/asdf.sh ]] && source $HOME/.asdf/asdf.sh
+
