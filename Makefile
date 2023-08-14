@@ -6,7 +6,7 @@ help: ## Print command list
 clean:
 	git clean -Xf
 
-bootstrap:
+bootstrap: ## Bootstrap chezmoi
 	chezmoi init
 
 dotfiles: ## Update dotfiles
