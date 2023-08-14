@@ -22,6 +22,7 @@ alias tree='exa --tree'
 alias ping='prettyping --nolegend'
 alias vim='nvim'
 alias vi='nvim'
+alias cd='z'
 
 # Git stuff
 alias gp="git push"
@@ -45,6 +46,7 @@ alias work="cd ~/work"
 alias dev="cd ~/dev"
 
 # Misc
+alias .="cd .."
 alias -- -="cd -"
 alias cl="clear"
 f() {

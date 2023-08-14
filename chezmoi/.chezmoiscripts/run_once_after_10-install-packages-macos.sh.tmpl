@@ -23,24 +23,38 @@ set -eufo pipefail
 
 {{ $brews := list
   "git"
-  "bat" # a cat clone with syntax highlighting and Git integration.
+  
+  # a cat clone with syntax highlighting and Git integration.
+  "bat" 
+  
   "tree"
   "zsh"
   "chezmoi"
   
-  "yabai" # tiling window manager
-  "skhd" # simple hotkey daemon for macOS
+  # tiling window manager
+  "yabai" 
+  # simple hotkey daemon for macOS
+  "skhd" 
 
-  "htop" # interactive process viewer
-  "fd" # a simple, fast and user-friendly alternative to find
-  "dust" # a more intuitive version of du in rust
-  "ripgrep" # recursively searches directories for a regex pattern
-  "prettyping" # a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read
-  "nvim" # a hyperextensible Vim-based text editor
+  # interactive process viewer
+  "htop" 
+  # a simple, fast and user-friendly alternative to find
+  "fd" 
+  # a more intuitive version of du in rust
+  "dust" 
+  # recursively searches directories for a regex pattern
+  "ripgrep" 
+  # a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read
+  "prettyping" 
+  # a hyperextensible Vim-based text editor
+  "nvim" 
 
-  "exa" # a modern replacement for ls
-  "fzy" # fast, simple fuzzy text selector for the terminal
-  "zoxide" # smarter cd command
+  # a modern replacement for ls
+  "exa" 
+  # fast, simple fuzzy text selector for the terminal
+  "fzy" 
+  # smarter cd command
+  "zoxide" 
 -}}
 
 {{ $casks := list
