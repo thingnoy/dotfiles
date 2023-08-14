@@ -1,7 +1,6 @@
 {{- $name := "supasai(boy)" -}}
 {{- $email := "boyskypart@gmail.com" -}}
-{{- $github_user := "supasai(boy)" -}}
-{{- $asdf_version := "0.12.0" -}}
+{{- $github_user := "thingnoy" -}}
 {{- $computer_name := default "thingnoy-computer-name" (env "CM_computer_name") -}}
 
 {{- if (env "ASK") }}
@@ -9,12 +8,10 @@
 {{-   $name = promptString "Full Name" $name -}}
 {{-   $email = promptString "Email" $email -}}
 {{-   $github_user = promptString "GitHub Username" $github_user -}}
-{{-   $asdf_version = promptString "Asdf Version" $asdf_version -}}
 {{- end }}
 
 data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   github_user: {{ $github_user | quote }}
-  asdf_version: {{ $asdf_version | quote }}
   computer_name: {{ $computer_name | quote }}
