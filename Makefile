@@ -14,6 +14,3 @@ dotfiles: ## Update dotfiles
 
 apply: ## Run chezmoi apply
 	@chezmoi apply
-
-macos: ## Run macos script
-	chezmoi cat ~/.chezmoi_scripts/99-macos-name.zsh | zsh

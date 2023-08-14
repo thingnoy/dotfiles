@@ -23,23 +23,30 @@ set -eufo pipefail
 
 {{ $brews := list
   "git"
-
-  "mas"
-
-  "tmux"
+  "bat" # a cat clone with syntax highlighting and Git integration.
   "tree"
   "zsh"
-
   "chezmoi"
-  "exa"
-  "gpg"
-  "fzy"
-  "zoxide"
+  
+  "yabai" # tiling window manager
+  "skhd" # simple hotkey daemon for macOS
+
+  "htop" # interactive process viewer
+  "fd" # a simple, fast and user-friendly alternative to find
+  "dust" # a more intuitive version of du in rust
+  "ripgrep" # recursively searches directories for a regex pattern
+  "prettyping" # a wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read
+  "nvim" # a hyperextensible Vim-based text editor
+
+  "exa" # a modern replacement for ls
+  "fzy" # fast, simple fuzzy text selector for the terminal
+  "zoxide" # smarter cd command
 -}}
 
 {{ $casks := list
+  "font-hack-nerd-font"
+  "font-meslo-lg-nerd-font"
   "font-fira-code-nerd-font"
-  "font-jetbrains-mono"
   "font-jetbrains-mono-nerd-font"
 -}}
 

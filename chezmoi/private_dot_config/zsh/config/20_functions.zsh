@@ -35,22 +35,6 @@ timezsh() {
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
 
-use_omz() {
-  cp ~/.omz_rc ~/.zshrc
-  exec $SHELL -l
-}
-
-touch-safe() {
-  for f in "$@"; do
-    [ -d $f:h ] || mkdir -p $f:h && command touch $f
-  done
-}
-
-touch-editor() {
-  touch-safe $@
-  $EDITOR $@
-}
-
 take() {
   mkdir -p $@ && cd ${@:$#}
 }
@@ -82,51 +66,4 @@ function prompt_my_arch_check() {
   elif [[ "$arch" == "x86_64" ]]; then
     p10k segment -t "x86" -b 232 -f 7
   fi
-}
-
-url_encode() {
-  awk 'BEGIN {
-      for (n = 0; n < 125; n++) {
-         m[sprintf("%c", n)] = n
-      }
-      n = 1
-      while (1) {
-         s = substr(ARGV[1], n, 1)
-         if (s == "") {
-            break
-         }
-         t = s ~ /[[:alnum:]_.!~*\47()-]/ ? t s : t sprintf("%%%02X", m[s])
-         n++
-      }
-      print t
-   }' "$1"
-}
-
-# Transfer.sh
-# Usage : transfer path/to/file
-transfer() {
-  if [ $# -eq 0 ]; then
-    echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>" >&2
-    return 1
-  fi
-
-  if tty -s; then
-    file="$1"
-    file_name=$(basename "$file")
-    if [ ! -e "$file" ]; then
-      echo "$file: No such file or directory" >&2
-      return 1
-    fi
-    if [ -d "$file" ]; then
-      file_name="$file_name.zip" ,
-      (cd "$file" && zip -r -q - .) | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null,
-    else cat "$file" | curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null; fi
-  else
-    file_name=$1
-    curl --progress-bar --upload-file "-" "http://transfer.sh/$file_name" | tee /dev/null
-  fi
-}
-
-dir() {
-  basename $PWD
 }

@@ -8,7 +8,22 @@ alias aa='arch -arm64 '
 alias ax='arch -x86_64 '
 alias brewx='ax /usr/local/bin/brew'
 
-# Git
+# Replace default commands
+alias ll='exa -la --git --icons'
+alias ls='exa'
+alias l='exa -lah'
+alias cat='bat'
+alias du='dust'
+alias df='dust -df'
+alias find='fd'
+alias grep='rg'
+alias top='htop'
+alias tree='exa --tree'
+alias ping='prettyping --nolegend'
+alias vim='nvim'
+alias vi='nvim'
+
+# Git stuff
 alias gp="git push"
 alias gl="git pull"
 alias glog="git graph"
@@ -23,6 +38,12 @@ alias gba="git branch -a"
 alias gcmsg="git commit -m"
 alias gco="git checkout"
 
+# directory short cuts
+alias p='cd ~/Projects/'
+alias d='cd ~/Downloads/'
+alias work="cd ~/work"
+alias dev="cd ~/dev"
+
 # Misc
 alias -- -="cd -"
 alias cl="clear"
@@ -31,11 +52,9 @@ f() {
 	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzy) && cd "$dir"
 }
 alias ip="curl ifconfig.me"
-alias l="ls -la"
 alias reload="exec $SHELL -l"
-alias work="cd ~/work"
-alias dev="cd ~/dev"
 alias active-sims="xcrun simctl list 'devices' 'booted'"
+alias usage="du -h -d 1 | sort -h"
 
 # Unused aliases
 ua() {
