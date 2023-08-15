@@ -52,5 +52,4 @@ fi
 [[ -f $HOME/.config/zsh/config/10_options.zsh ]] && source $HOME/.config/zsh/config/10_options.zsh
 [[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
-[[ -f $HOME/.asdf/asdf.sh ]] && source $HOME/.asdf/asdf.sh
-
+source $(brew --prefix asdf)/libexec/asdf.sh
