@@ -20,7 +20,7 @@ echo "Install asdf plugins"
   "yarn"       "1.22.17"
   "rust"       "latest"
   "golang"     "latest"
-}}
+-}}
 
 # Skip Node.js signature check
 export NODEJS_CHECK_SIGNATURES=no
@@ -40,9 +40,7 @@ export NODEJS_CHECK_SIGNATURES=no
 
 # -- Packages -- #
 
-{{ $rubyPackages := list
-  "tmuxinator"
-}}
+{{ $rubyPackages := list -}}
 
 {{ range sortAlpha $rubyPackages }}
   gem install {{ . }}
