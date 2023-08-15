@@ -53,3 +53,17 @@ fi
 [[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
 source $(brew --prefix asdf)/libexec/asdf.sh
+
+
+# Decorate prompt
+PROMPT='%F{33}i%f%F{39}a%f%F{38}n%f%F{44}pan%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{38}:%1~/%f %F{44}%#%f '
+
+# Case insensitive completion
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Emacs-style keybindings
+bindkey -e
+
+# Syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
