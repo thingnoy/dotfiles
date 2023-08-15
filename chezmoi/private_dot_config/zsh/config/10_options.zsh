@@ -16,7 +16,9 @@ HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
-setopt hist_ignore_all_dups
+setopt hist_ignore_all_dups # do not put duplicated command into history list
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt inc_append_history_time  # append command to history file immediately after execution
+setopt extended_history  # record command start time
