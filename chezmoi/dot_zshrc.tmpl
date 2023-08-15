@@ -5,7 +5,6 @@ export LANG=en_US.UTF-8
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:${HOME}/.local/bin"
-export PATH="$PATH:$(yarn global bin)"
 
 # Chezmoi cached variables
 export CM_computer_name={{ .computer_name }}
@@ -54,6 +53,7 @@ fi
 
 source $(brew --prefix asdf)/libexec/asdf.sh
 
+export PATH="$PATH:$(yarn global bin)"
 
 # Decorate prompt
 PROMPT='%F{33}i%f%F{39}a%f%F{38}n%f%F{44}pan%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{38}:%1~/%f %F{44}%#%f '
