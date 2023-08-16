@@ -1,0 +1,16 @@
+export EDITOR=vim
+export TERM=xterm-256color
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:${HOME}/.local/bin"
+
+# Chezmoi cached variables
+export CM_computer_name={{ .computer_name }}
+
+eval $(/opt/homebrew/bin/brew shellenv)
+
+source $(brew --prefix asdf)/libexec/asdf.sh
+
+export PATH="$PATH:$(yarn global bin)"
