@@ -4,4 +4,4 @@ rm -rf ~/.config
 rm -rf ~/.local
 
 rm -rf ~/.asdf ~/.asdfrc ~/.gem ~/.p10k.zsh ~/.p10k.zsh.zwc ~/.tmux
-rm -rf ~/.cache ~/.zlogin ~/.zsh_history ~/.zsh_sessions ~/.zshenv ~/.zshrc
+rm -rf ~/.cache ~/.zlogin ~/.zsh_history ~/.zsh_sessions ~/.zshenv ~/.zshrc ~/.bashrc
