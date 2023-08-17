@@ -11,22 +11,23 @@ export CM_computer_name={{ .computer_name }}
 
 eval $(/opt/homebrew/bin/brew shellenv)
 
+# Zoxide (smarter cd command) : prompt hook mode
+eval "$(zoxide init zsh --hook prompt)"
+
 # Cleanup duplicated PATHs (mostly from shellenv evals above)
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
-
-# Zoxide : prompt hook mode
-if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh --hook prompt)"
-fi
 
 [[ -f $HOME/.config/zsh/config/00_aliases.zsh ]] && source $HOME/.config/zsh/config/00_aliases.zsh
 [[ -f $HOME/.config/zsh/config/10_options.zsh ]] && source $HOME/.config/zsh/config/10_options.zsh
 [[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
 source $(brew --prefix asdf)/libexec/asdf.sh
-
 export PATH="$PATH:$(yarn global bin)"
 
+
+# --------------------------------
+# MISCELLENOUS
+# --------------------------------
 # Decorate prompt
 PROMPT='%F{33}i%f%F{39}a%f%F{38}n%f%F{44}pan%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{38}:%1~/%f %F{44}%#%f '
 
@@ -34,9 +35,21 @@ PROMPT='%F{33}i%f%F{39}a%f%F{38}n%f%F{44}pan%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{38
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+
+# --------------------------------
+# PLUGINS
+# --------------------------------
+source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${HOMEBREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+# --------------------------------
+# KEYBINDINGS
+# --------------------------------
 # Emacs-style keybindings
 bindkey -e
 
-# Syntax highlighting
-source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ${HOMEBREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+# History substring search keybindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
