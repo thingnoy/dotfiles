@@ -17,7 +17,6 @@ alias tree='exa --tree'
 alias ping='prettyping --nolegend'
 alias vim='nvim'
 alias vi='nvim'
-alias cd='z'
 
 # Git stuff
 alias gp="git push"
@@ -50,8 +49,6 @@ alias usage="du -h -d 1 | sort -h"
 
 # Find files
 f() {
-	local dir
-	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzy) && cd "$dir"
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2>/dev/null | fzy) && cd "$dir"
 }
-
-alias sel="$(zoxide query --list --score | fzf -n2 --query "$query" "$fzf_opts[@]" | head -1 | tr -s ' ' | sed 's/^\s\+//' | cut -d' ' -f2)"  || return 1
