@@ -19,15 +19,17 @@ set -eufo pipefail
   "homebrew/cask"
   "homebrew/cask-fonts"
   "mac-cleanup/mac-cleanup-py"
+  "koekeishiya/formulae"
 -}}
 
 {{ $brews := list
   "git"
+# bat is a dependency of exa
   "bat"
   "tree"
   "zsh"
   "chezmoi"
-  "koekeishiya/formulae/yabai"
+  "yabai"
   "skhd"
   "htop"
   "fd"
@@ -36,7 +38,9 @@ set -eufo pipefail
   "prettyping"
   "nvim"
   "exa"
+  # fzy is a dependency of zoxide
   "fzy"
+  "fzf"
   "zoxide"
   "asdf"
   "gpg"
