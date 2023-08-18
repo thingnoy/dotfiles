@@ -54,4 +54,4 @@ f() {
 	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzy) && cd "$dir"
 }
 
-sel="$(zoxide query --list --score | fzf -n2 --query "$query" "$fzf_opts[@]" | head -1 | tr -s ' ' | sed 's/^\s\+//' | cut -d' ' -f2)"  || return 1
+alias sel="$(zoxide query --list --score | fzf -n2 --query "$query" "$fzf_opts[@]" | head -1 | tr -s ' ' | sed 's/^\s\+//' | cut -d' ' -f2)"  || return 1
