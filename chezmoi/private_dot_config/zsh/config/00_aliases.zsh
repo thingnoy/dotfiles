@@ -46,9 +46,3 @@ alias ip="curl -s ipinfo.io/ip"
 alias reload="exec $SHELL -l"
 alias active-sims="xcrun simctl list 'devices' 'booted'"
 alias usage="du -h -d 1 | sort -h"
-
-# Find files
-f() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2>/dev/null | fzy) && cd "$dir"
-}
