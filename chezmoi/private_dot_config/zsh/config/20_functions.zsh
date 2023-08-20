@@ -27,15 +27,3 @@ y() {
 }
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
-
-cd() {
-    if [ "$#" -eq 0 ]; then
-        builtin cd
-    else
-        local dir
-        dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2>/dev/null | fzy)
-        if [ -n "$dir" ]; then
-            builtin cd "$dir"
-        fi
-    fi
-}
