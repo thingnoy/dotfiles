@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+SKETCHBAR_BIN="/opt/homebrew/bin/sketchybar"
+
 source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 source "$HOME/.config/sketchybar/icons.sh"  # Loads all defined icons
 
@@ -62,7 +64,7 @@ PADDINGS=3
 # 	popup.background.color=$POPUP_BACKGROUND_COLOR \
 # 	popup.background.shadow.drawing=$SHADOW
 
-sketchybar --bar height=50 \
+$SKETCHBAR_BIN --bar height=50 \
   corner_radius=14 \
   border_width=0 \
   margin=95 \
@@ -92,8 +94,8 @@ sketchybar --bar height=50 \
   background.padding_right=$PADDINGS \
   background.padding_left=$PADDINGS
 
-sketchybar --add event window_focus
-sketchybar --add event title_change
+$SKETCHBAR_BIN --add event window_focus
+$SKETCHBAR_BIN --add event title_change
 
 # Left
 
@@ -114,6 +116,6 @@ source "$ITEM_DIR/wifi.sh"
 
 #################### Finalizing Setup ####################
 
-sketchybar --update
+$SKETCHBAR_BIN --update
 
 echo "sketchybar configuration loaded.."
