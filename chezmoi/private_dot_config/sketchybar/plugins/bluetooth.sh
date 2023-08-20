@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+#SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
 STATE=$(blueutil -p)
 if [ $STATE = 0 ]; then

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+#SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
 WINDOW_TITLE=$(/opt/homebrew/bin/yabai -m query --windows --window | jq -r '.title')
 
