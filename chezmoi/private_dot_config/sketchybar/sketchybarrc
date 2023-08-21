@@ -8,111 +8,134 @@ source "$HOME/.config/sketchybar/icons.sh"  # Loads all defined icons
 ITEM_DIR="$HOME/.config/sketchybar/items"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-# FONT="FiraCode Nerd Font"
-
-# PADDINGS=3 # All paddings use this value (icon, label, background)
-
-# POPUP_BORDER_WIDTH=2
-# POPUP_CORNER_RADIUS=11
-
-# CORNER_RADIUS=15
-
+FONT="FiraCode Nerd Font"
+PADDINGS=3 # All paddings use this value (icon, label, background)
+POPUP_BORDER_WIDTH=2
+POPUP_CORNER_RADIUS=11
+CORNER_RADIUS=15
 SHADOW=on
 
-LABEL_FONT_FAMILY="Skypart"
-LABEL_FONT_STYLE="Medium"
-LABEL_FONT_SIZE="14"
-LABEL_COLOR=0xffdfe1ea
-ICON_FONT_FAMILY="Hack Nerd Font"
-ICON_FONT_STYLE="Regular"
-ICON_FONT_SIZE="16"
-BAR_COLOR=0xee1a1c26
-LABEL_COLOR=0xffdfe1ea
-BACKGROUND_COLOR=0xff252731
-BACKGROUND_HEIGHT=33
-BACKGROUND_CORNER_RADIUS=20
-PADDINGS=3
+# Top bar
+# LABEL_FONT_FAMILY="Skypart"
+# LABEL_FONT_STYLE="Medium"
+# LABEL_FONT_SIZE="14"
+# LABEL_COLOR=0xffdfe1ea
+# ICON_FONT_FAMILY="Hack Nerd Font"
+# ICON_FONT_STYLE="Regular"
+# ICON_FONT_SIZE="16"
+# BAR_COLOR=0xee1a1c26
+# LABEL_COLOR=0xffdfe1ea
+# BACKGROUND_COLOR=0xff252731
+# BACKGROUND_HEIGHT=33
+# BACKGROUND_CORNER_RADIUS=20
+# PADDINGS=3
+
+# Bottom bar
+# LABEL_FONT_FAMILY="Skypart"
+# LABEL_FONT_STYLE="Medium"
+# LABEL_FONT_SIZE="14"
+# LABEL_COLOR=0xffdfe1ea                                     
+# ICON_FONT_FAMILY="Hack Nerd Font"
+# ICON_FONT_STYLE="Regular"
+# ICON_FONT_SIZE="16"
+# BAR_COLOR=0xee1a1c26
+# BACKGROUND_COLOR=0xff252731
+# BACKGROUND_HEIGHT=33
+# BACKGROUND_CORNER_RADIUS=20
+# PADDINGS=3
 
 # General bar and defaults
 
-# sketchybar --bar height=30 \
-# 	color=$BAR_COLOR \
-# 	shadow=$SHADOW \
-# 	position=top \
-# 	sticky=on \
-# 	padding_right=0 \
-# 	padding_left=3 \
-# 	corner_radius=$CORNER_RADIUS \
-# 	y_offset=5 \
-# 	margin=5 \
-# 	blur_radius=20 \
-# 	notch_width=200 \
-# 	--default updates=when_shown \
-# 	icon.font="$FONT:Bold:14.0" \
-# 	icon.color=$ICON_COLOR \
-# 	icon.padding_left=$PADDINGS \
-# 	icon.padding_right=$PADDINGS \
-# 	label.font="$FONT:SemiBold:13.0" \
-# 	label.color=$LABEL_COLOR \
-# 	label.padding_left=$PADDINGS \
-# 	label.padding_right=$PADDINGS \
-# 	background.padding_right=$PADDINGS \
-# 	background.padding_left=$PADDINGS \
-# 	popup.background.border_width=2 \
-# 	popup.background.corner_radius=11 \
-# 	popup.background.border_color=$POPUP_BORDER_COLOR \
-# 	popup.background.color=$POPUP_BACKGROUND_COLOR \
-# 	popup.background.shadow.drawing=$SHADOW
-
-$SKETCHBAR_BIN --bar height=50 \
-  corner_radius=14 \
-  border_width=0 \
-  margin=95 \
-  blur_radius=0 \
-  position=top \
-  padding_left=4 \
-  padding_right=4 \
-  color=$BAR_COLOR \
-  topmost=off \
-  sticky=on \
-  font_smoothing=off \
-  y_offset=10 \
-  notch_width=0 \
+$SKETCHBAR_BIN --bar height=30 \
+	color=$BAR_COLOR \
+	shadow=$SHADOW \
+	position=top \
+	sticky=on \
+	padding_right=0 \
+	padding_left=3 \
+	corner_radius=$CORNER_RADIUS \
+	y_offset=5 \
+	margin=5 \
+	blur_radius=20 \
+	notch_width=200 \
   \
-  --default drawing=on \
-  updates=when_shown \
-  label.font.family="$LABEL_FONT_FAMILY" \
-  label.font.style=$LABEL_FONT_STYLE \
-  label.font.size=$LABEL_FONT_SIZE \
-  label.padding_left=$PADDINGS \
-  label.padding_right=$PADDINGS \
-  icon.font.family="$ICON_FONT_FAMILY" \
-  icon.font.style=$ICON_FONT_STYLE \
-  icon.font.size=$ICON_FONT_SIZE \
-  icon.padding_left=$PADDINGS \
-  icon.padding_right=$PADDINGS \
-  background.padding_right=$PADDINGS \
-  background.padding_left=$PADDINGS
+	--default updates=when_shown \
+	icon.font="$FONT:Bold:14.0" \
+	icon.color=$ICON_COLOR \
+	icon.padding_left=$PADDINGS \
+	icon.padding_right=$PADDINGS \
+	label.font="$FONT:SemiBold:13.0" \
+	label.color=$LABEL_COLOR \
+	label.padding_left=$PADDINGS \
+	label.padding_right=$PADDINGS \
+	background.padding_right=$PADDINGS \
+	background.padding_left=$PADDINGS \
+	popup.background.border_width=2 \
+	popup.background.corner_radius=11 \
+	popup.background.border_color=$POPUP_BORDER_COLOR \
+	popup.background.color=$POPUP_BACKGROUND_COLOR \
+	popup.background.shadow.drawing=$SHADOW
+
+# $SKETCHBAR_BIN --bar height=50 \
+#   corner_radius=14 \
+#   border_width=0 \
+#   margin=95 \
+#   blur_radius=0 \
+#   position=top \
+#   padding_left=4 \
+#   padding_right=4 \
+#   color=$BAR_COLOR \
+#   topmost=off \
+#   sticky=on \
+#   font_smoothing=off \
+#   y_offset=10 \
+#   notch_width=0 \
+#   \
+#   --default drawing=on \
+#   updates=when_shown \
+#   label.font.family="$LABEL_FONT_FAMILY" \
+#   label.font.style=$LABEL_FONT_STYLE \
+#   label.font.size=$LABEL_FONT_SIZE \
+#   label.padding_left=$PADDINGS \
+#   label.padding_right=$PADDINGS \
+#   icon.font.family="$ICON_FONT_FAMILY" \
+#   icon.font.style=$ICON_FONT_STYLE \
+#   icon.font.size=$ICON_FONT_SIZE \
+#   icon.padding_left=$PADDINGS \
+#   icon.padding_right=$PADDINGS \
+#   background.padding_right=$PADDINGS \
+#   background.padding_left=$PADDINGS
 
 $SKETCHBAR_BIN --add event window_focus
 $SKETCHBAR_BIN --add event title_change
 
 # Left
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
 
 # Center
 
 # Right
-
-source "$ITEM_DIR/menu.sh"
-source "$ITEM_DIR/system.sh"
-source "$ITEM_DIR/window_title.sh"
-
-source "$ITEM_DIR/time.sh"
+source "$ITEM_DIR/clock.sh"
+source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/volume.sh"
+# source "$ITEM_DIR/brew.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/network.sh"
 
-source "$ITEM_DIR/bluetooth.sh"
-source "$ITEM_DIR/vpn.sh"
-source "$ITEM_DIR/wifi.sh"
+# source "$ITEM_DIR/menu.sh"
+# source "$ITEM_DIR/system.sh"
+# source "$ITEM_DIR/window_title.sh"
+
+# source "$ITEM_DIR/time.sh"
+# source "$ITEM_DIR/battery.sh"
+
+# source "$ITEM_DIR/bluetooth.sh"
+# source "$ITEM_DIR/vpn.sh"
+# source "$ITEM_DIR/wifi.sh"
 
 #################### Finalizing Setup ####################
 

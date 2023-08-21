@@ -1,13 +1,15 @@
+#!/usr/bin/env sh
+
 #SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
 
 BATT_PERCENT=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
-# CHARGING=$(pmset -g batt | grep "AC Power")
+CHARGING=$(pmset -g batt | grep "AC Power")
+
 if [[ $CHARGING != "" ]]; then
-  $SKETCHBAR_BIN -m --set battery      \
-    icon=""                           \
-    label="${BATT_PERCENT}"
+  $SKETCHBAR_BIN -m --set battery icon="" label="${BATT_PERCENT}%"
   exit 0
 fi
+
 case ${BATT_PERCENT} in
    100) ICON=""; COLOR="0xff9ac868";;
     9[0-9]) ICON=""; COLOR="0xff9ac868" ;;
@@ -21,7 +23,5 @@ case ${BATT_PERCENT} in
     1[0-9]) ICON=""; COLOR="0xfff65e51" ;;
     *) ICON=""; COLOR="0xfff65e51"
 esac
-$SKETCHBAR_BIN -m --set battery             \
-  icon="$ICON"                          \
-  label="${BATT_PERCENT}%" \
-#  label.color="$COLOR"                    \
+
+$SKETCHBAR_BIN -m --set battery icon="$ICON" label="${BATT_PERCENT}%" label.color="$COLOR"                  

@@ -1,5 +1,5 @@
-$SKETCHBAR_BIN --add alias '网易云音乐' left                               \
-               --set '网易云音乐'                                          \
+$SKETCHBAR_BIN --add alias 'Music Stream' left                               \
+               --set 'Music Stream'                                          \
                      label.color=0xfff6768e                                \
                      alias.color=0xfff6768e                                \
                      background.padding_right=0                            \
