@@ -3,24 +3,27 @@ export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:${HOME}/.local/bin"
 
 # Chezmoi cached variables
 export CM_computer_name={{ .computer_name }}
 
-eval $(/opt/homebrew/bin/brew shellenv)
+# Ensure Homebrew is loaded
+export PATH="/opt/homebrew/bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Zoxide (smarter cd command) : prompt hook mode
-eval "$(zoxide init zsh --hook prompt)"
-
-# Cleanup duplicated PATHs (mostly from shellenv evals above)
+# Cleanup duplicated PATHs
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+
+# Load Zoxide
+eval "$(zoxide init zsh --hook prompt)"
 
 [[ -f $HOME/.config/zsh/config/00_aliases.zsh ]] && source $HOME/.config/zsh/config/00_aliases.zsh
 [[ -f $HOME/.config/zsh/config/10_options.zsh ]] && source $HOME/.config/zsh/config/10_options.zsh
 [[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
+# Homebrew-installed ASDF
 source $(brew --prefix asdf)/libexec/asdf.sh
 export PATH="$PATH:$(yarn global bin)"
 
