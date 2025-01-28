@@ -1,17 +1,14 @@
-{{- $name := "supasai(boy)" -}}
-{{- $email := "boyskypart@gmail.com" -}}
-{{- $github_user := "thingnoy" -}}
 {{- $computer_name := default "thingnoy-computer-name" (env "CM_computer_name") -}}
+{{- $email := "boyskypart@gmail.com" -}}
+{{- $github_name := "supasai(boy)" -}}
 
 {{- if (env "ASK") }}
 {{-   $computer_name = promptString "Computer Name" $computer_name -}}
-{{-   $name = promptString "Full Name" $name -}}
 {{-   $email = promptString "Email" $email -}}
-{{-   $github_user = promptString "GitHub Username" $github_user -}}
+{{-   $github_name = promptString "GitHub Name" $github_name -}}
 {{- end }}
 
 data:
-  name: {{ $name | quote }}
-  email: {{ $email | quote }}
-  github_user: {{ $github_user | quote }}
   computer_name: {{ $computer_name | quote }}
+  email: {{ $email | quote }}
+  github_name: {{ $github_name | quote }}
