@@ -36,9 +36,8 @@ alias gs="git status -sb"
 alias gst="git status -s -b && git log --oneline -n5 2>/dev/null || :"
 
 # directory short cuts
-alias dev="cd ~/Dev"
-alias p='cd ~/Projects/'
-alias work="cd ~/Workspace"
+alias dev="cd ~/devspace"
+alias work="cd ~/workspace"
 
 # Misc
 alias .="cd .."
