@@ -24,7 +24,7 @@ eval "$(zoxide init zsh --hook prompt)"
 [[ -f $HOME/.config/zsh/config/20_functions.zsh ]] && source $HOME/.config/zsh/config/20_functions.zsh
 
 # Homebrew-installed ASDF
-source $(brew --prefix asdf)/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$PATH:$(yarn global bin)"
 
 
