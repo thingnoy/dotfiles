@@ -37,27 +37,3 @@ PROMPT='%F{33}s%f%F{39}k%f%F{38}y%f%F{44}part%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{3
 # Case insensitive completion
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-
-# --------------------------------
-# PLUGINS
-# --------------------------------
-# to use syntax highlighting
-source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# to use history-substring-search-up/down, you need to bind them to some keys
-source ${HOMEBREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-# to use autosuggestions based on your command history
-source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
-# --------------------------------
-# KEYBINDINGS
-# --------------------------------
-# Emacs-style keybindings
-bindkey -e
-
-# History substring search keybindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down

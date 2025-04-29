@@ -13,4 +13,4 @@ dotfiles: ## Update dotfiles
 	chezmoi apply -i files
 
 apply: ## Run chezmoi apply
-	@chezmoi apply
+	@chezmoi apply -v
