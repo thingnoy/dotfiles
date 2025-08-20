@@ -39,6 +39,10 @@ set -eufo pipefail
 # "zsh-autosuggestions"          # Fish-like autosuggestions for Zsh
 # "zsh-history-substring-search" # Fish-like history search for Zsh
 # "zsh-syntax-highlighting"      # Fish-like syntax highlighting for Zsh
+# "openssl@3"                    # for ruby
+# "libyaml"                      # for ruby
+# "gmp"                          # for ruby
+
 
 {{ $brews := list
   "asdf"
@@ -62,6 +66,9 @@ set -eufo pipefail
   "zsh-autosuggestions"
   "zsh-history-substring-search"
   "zsh-syntax-highlighting"
+  "openssl@3"
+  "libyaml"
+  "gmp"
 -}}
 
 {{ $casks := list
