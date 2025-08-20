@@ -34,7 +34,7 @@ export NODEJS_CHECK_SIGNATURES=no
 
   {{- if not (eq $val "None") }}
     asdf install {{ $key }} {{ $val }} || true
-    asdf global {{ $key }} {{ $val }} || true
+    asdf set --home {{ $key }} {{ $val }} || true
   {{- end -}}
 {{ end -}}
 
