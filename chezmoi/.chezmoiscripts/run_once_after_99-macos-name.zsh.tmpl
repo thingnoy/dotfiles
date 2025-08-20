@@ -11,12 +11,29 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Prompt for inputs, with suggestion
+# Prompt for computer name input, with default suggestion
 COMPUTER_NAME_DEFAULT="{{ .computer_name }}"
 vared -p "Computer Name [$COMPUTER_NAME_DEFAULT]: " -c COMPUTER_NAME
 COMPUTER_NAME="${COMPUTER_NAME:-$COMPUTER_NAME_DEFAULT}"
 
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName $COMPUTER_NAME
+# Set all three names: ComputerName, LocalHostName, and HostName
+echo "Setting computer names to: $COMPUTER_NAME"
+
+# ComputerName → The name shown in System Settings and Finder
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+
+# LocalHostName → Used for Bonjour / AirDrop; must not contain spaces or special characters
+LOCAL_HOST_NAME=$(echo "$COMPUTER_NAME" | sed 's/[^A-Za-z0-9-]//g')
+sudo scutil --set LocalHostName "$LOCAL_HOST_NAME"
+
+# HostName → Used for network and terminal (e.g., `hostname`)
+sudo scutil --set HostName "$LOCAL_HOST_NAME"
+
+# Verify that all names were successfully updated
+echo "Verifying..."
+echo "ComputerName:   $(scutil --get ComputerName)"
+echo "LocalHostName:  $(scutil --get LocalHostName)"
+echo "HostName:       $(scutil --get HostName)"
+
 
 {{ end -}}
