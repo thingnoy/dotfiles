@@ -43,7 +43,7 @@ set -eufo pipefail
   "betterdisplay"
 -}}
 
-brew bundle --no-lock --file=/dev/stdin <<EOF || :
+brew bundle --file=- <<EOF || :
 {{ range ($taps | sortAlpha | uniq) -}}
 tap "{{ . }}"
 {{ end }}
