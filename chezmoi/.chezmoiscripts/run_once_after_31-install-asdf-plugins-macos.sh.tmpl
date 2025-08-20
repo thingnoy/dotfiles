@@ -30,7 +30,7 @@ export NODEJS_CHECK_SIGNATURES=no
   {{- $key := . }}
   {{- $val := get $plugins $key }}
 
-  asdf plugin-add {{ $key }} || true
+  asdf plugin add {{ $key }} || true
 
   {{- if not (eq $val "None") }}
     asdf install {{ $key }} {{ $val }} || true
