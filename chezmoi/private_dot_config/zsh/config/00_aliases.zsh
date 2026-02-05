@@ -34,6 +34,7 @@ alias glog="git graph"
 alias gp="git push"
 alias gs="git status -sb"
 alias gst="git status -s -b && git log --oneline -n5 2>/dev/null || :"
+alias git-cleanup='git fetch --prune && git branch -vv | grep ": gone]" | awk "{print \$1}" | xargs git branch -d'
 
 # directory short cuts
 alias dev="cd ~/projects/devspace"
