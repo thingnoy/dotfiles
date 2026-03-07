@@ -26,14 +26,19 @@ eval "$(zoxide init zsh --hook prompt)"
 # Homebrew-installed ASDF
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$PATH:$(yarn global bin)"
+export PATH="$HOME/.bun/bin:$PATH"
 
 
 # --------------------------------
 # MISCELLENOUS
 # --------------------------------
-# Decorate prompt
-PROMPT='%F{33}s%f%F{39}k%f%F{38}y%f%F{44}part%f%F{50}@%f%F{43}ar%f%F{44}ch%f%F{38}:%1~/%f %F{44}%#%f '
+# Starship prompt
+eval "$(starship init zsh)"
 
 # Case insensitive completion
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Simulator pasteboard sync (workaround for Tahoe beta)
+alias simp='pbpaste | xcrun simctl pbcopy booted'   # Mac -> Simulator
+alias simv='xcrun simctl pbpaste booted | pbcopy'   # Simulator -> Mac

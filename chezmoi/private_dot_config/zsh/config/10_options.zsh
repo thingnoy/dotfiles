@@ -8,9 +8,9 @@ setopt extendedglob
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-# Save 10,000 entries
-HISTSIZE=10000
-SAVEHIST=10000
+# Save 100,000 entries
+HISTSIZE=100000
+SAVEHIST=100000
 
 # History File Location
 HISTFILE=~/.zsh_history
