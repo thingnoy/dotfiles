@@ -61,8 +61,8 @@ rq() {
 
   _rq_is_running() {
     [[ -f "$pidfile" ]] && kill -0 "$(cat "$pidfile")" 2>/dev/null && return 0
-    # Also check for actual electron/node processes
     pgrep -f "requestly-desktop-app" >/dev/null 2>&1 && return 0
+    pgrep -f "requestly.*vite" >/dev/null 2>&1 && return 0
     return 1
   }
 
@@ -76,10 +76,12 @@ rq() {
         kill "$old_pid" 2>/dev/null
       fi
     fi
-    # Also kill any stray requestly processes (covers force-quit scenarios)
+    # Kill desktop app and web app processes
     pkill -f "requestly-desktop-app" 2>/dev/null
+    pkill -f "requestly.*vite" 2>/dev/null
     sleep 1
     pkill -9 -f "requestly-desktop-app" 2>/dev/null
+    pkill -9 -f "requestly.*vite" 2>/dev/null
     rm -f "$pidfile"
   }
 
@@ -94,12 +96,20 @@ rq() {
       fi
       ;;
     status)
-      if _rq_is_running; then
-        echo "Requestly is running."
+      local found=0
+      if pgrep -f "requestly-desktop-app" >/dev/null 2>&1; then
+        echo "Desktop app: running"
+        found=1
       else
-        echo "Requestly is not running."
-        [[ -f "$pidfile" ]] && rm -f "$pidfile"
+        echo "Desktop app: not running"
       fi
+      if pgrep -f "requestly.*vite" >/dev/null 2>&1; then
+        echo "Web app:     running ($(lsof -i :3000 -P -t 2>/dev/null | head -1 | xargs -I{} ps -p {} -o command= 2>/dev/null | sed 's|.*/||'))"
+        found=1
+      else
+        echo "Web app:     not running"
+      fi
+      [[ $found -eq 0 ]] && [[ -f "$pidfile" ]] && rm -f "$pidfile"
       ;;
     start|*)
       if _rq_is_running; then
