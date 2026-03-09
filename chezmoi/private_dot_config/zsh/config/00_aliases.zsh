@@ -40,6 +40,10 @@ alias git-cleanup='git fetch --prune && git branch -vv | grep ": gone]" | awk "{
 alias dev="cd ~/projects/devspace"
 alias work="cd ~/projects/workspace"
 
+# Claude
+alias shh="touch ~/.claude/mute && echo 'muted'"
+alias speak="rm -f ~/.claude/mute && echo 'unmuted'"
+
 # Misc
 alias .="cd .."
 alias active-sims="xcrun simctl list 'devices' 'booted'"

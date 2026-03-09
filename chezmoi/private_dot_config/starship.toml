@@ -1,73 +1,66 @@
-# Starship prompt config
+"$schema" = 'https://starship.rs/config-schema.json'
 
-# Timeout for commands (ms)
-command_timeout = 1000
-
-# Newline between prompts
-add_newline = true
-
-# Prompt format
 format = """
-$username\
-$hostname\
+[░▒▓](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
 $directory\
+[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
+[](fg:#394260 bg:#212736)\
 $nodejs\
-$swift\
-$python\
 $rust\
 $golang\
-$cmd_duration\
-$line_break\
-$character"""
-
-[username]
-show_always = false
-style_user = "cyan bold"
-format = "[$user]($style) "
-
-[hostname]
-ssh_only = true
-style = "green bold"
-format = "in [$hostname]($style) "
+$php\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
 
 [directory]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
 truncation_length = 3
-truncate_to_repo = true
-style = "blue bold"
-format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [git_branch]
-style = "purple bold"
-format = "on [$symbol$branch]($style) "
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-style = "red bold"
-format = '([$all_status$ahead_behind]($style) )'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [nodejs]
-format = "[$symbol($version)]($style) "
-symbol = " "
-
-[swift]
-format = "[$symbol($version)]($style) "
-symbol = " "
-
-[python]
-format = "[$symbol($version)]($style) "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
-format = "[$symbol($version)]($style) "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [golang]
-format = "[$symbol($version)]($style) "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[cmd_duration]
-min_time = 2000
-style = "yellow bold"
-format = "took [$duration]($style) "
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[>](bold red)"
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'

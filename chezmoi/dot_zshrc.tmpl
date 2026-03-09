@@ -30,6 +30,15 @@ export PATH="$HOME/.bun/bin:$PATH"
 
 
 # --------------------------------
+# iTerm2 + tmux auto-attach
+# --------------------------------
+if [[ "$TERM_PROGRAM" == "iTerm.app" ]] && [[ -z "$TMUX" ]]; then
+  if [[ "$ITERM_PROFILE" == "Hotkey Window" ]]; then
+    tmux -CC new-session -As hotkey
+  fi
+fi
+
+# --------------------------------
 # MISCELLENOUS
 # --------------------------------
 # Starship prompt
@@ -41,4 +50,65 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Simulator pasteboard sync (workaround for Tahoe beta)
 alias simp='pbpaste | xcrun simctl pbcopy booted'   # Mac -> Simulator
-alias simv='xcrun simctl pbpaste booted | pbcopy'   # Simulator -> Mac
+alias simv='xcrun simctl pbpaste booted | pbcopy'
+
+# Requestly Desktop App
+# rq       → start (kills existing first if running)
+# rq stop  → just kill it
+# rq status → check if running
+rq() {
+  local pidfile="/tmp/requestly.pid"
+
+  _rq_is_running() {
+    [[ -f "$pidfile" ]] && kill -0 "$(cat "$pidfile")" 2>/dev/null && return 0
+    # Also check for actual electron/node processes
+    pgrep -f "requestly-desktop-app" >/dev/null 2>&1 && return 0
+    return 1
+  }
+
+  _rq_kill() {
+    # Kill by pidfile
+    if [[ -f "$pidfile" ]]; then
+      local old_pid
+      old_pid=$(cat "$pidfile")
+      if kill -0 "$old_pid" 2>/dev/null; then
+        pkill -P "$old_pid" 2>/dev/null
+        kill "$old_pid" 2>/dev/null
+      fi
+    fi
+    # Also kill any stray requestly processes (covers force-quit scenarios)
+    pkill -f "requestly-desktop-app" 2>/dev/null
+    sleep 1
+    pkill -9 -f "requestly-desktop-app" 2>/dev/null
+    rm -f "$pidfile"
+  }
+
+  case "${1:-start}" in
+    stop)
+      if _rq_is_running; then
+        echo "Stopping Requestly..."
+        _rq_kill
+        echo "Stopped."
+      else
+        echo "Requestly is not running."
+      fi
+      ;;
+    status)
+      if _rq_is_running; then
+        echo "Requestly is running."
+      else
+        echo "Requestly is not running."
+        [[ -f "$pidfile" ]] && rm -f "$pidfile"
+      fi
+      ;;
+    start|*)
+      if _rq_is_running; then
+        echo "Killing existing Requestly..."
+        _rq_kill
+      fi
+      echo "Starting Requestly Desktop App..."
+      (cd /Users/skypart/projects/devspace/requestly/requestly-desktop-app && bash run.sh) &
+      echo $! > "$pidfile"
+      ;;
+  esac
+}

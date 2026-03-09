@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Mute check
+[ -f ~/.claude/mute ] && exit 0
+
+# Speech lock to prevent overlapping voices
+LOCK=~/.claude/.say-lock
+if [ -f "$LOCK" ] && kill -0 "$(cat "$LOCK" 2>/dev/null)" 2>/dev/null; then
+  exit 0
+fi
+
+PHRASES=(
+  "Awaiting orders"
+  "Ready and waiting"
+  "Standing by"
+  "Reporting"
+  "At your command"
+)
+
+RANDOM_INDEX=$((RANDOM % ${#PHRASES[@]}))
+say "[[volm 0.3]] ${PHRASES[$RANDOM_INDEX]}" &
+echo $! > "$LOCK"
+exit 0
