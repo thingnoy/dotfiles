@@ -15,9 +15,10 @@ PHRASES=(
   "Battle control online"
   "Systems operational"
   "Ready and waiting, commander"
+  "Moving now"
 )
 
 RANDOM_INDEX=$((RANDOM % ${#PHRASES[@]}))
-say "[[volm 0.3]] ${PHRASES[$RANDOM_INDEX]}" &
+say "[[volm 0.8]] ${PHRASES[$RANDOM_INDEX]}" &
 echo $! > "$LOCK"
 exit 0

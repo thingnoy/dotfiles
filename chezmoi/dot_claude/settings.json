@@ -9,14 +9,6 @@
       "Grep"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/skypart/.claude/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true
-  },
-  "effortLevel": "high",
   "hooks": {
     "SessionStart": [
       {
@@ -48,5 +40,22 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/skypart/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
+  },
+  "effortLevel": "high"
 }

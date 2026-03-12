@@ -7,7 +7,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:${HOME}/.local/bin"
 
 # Chezmoi cached variables
-export CM_computer_name={{ .computer_name }}
+export CM_computer_name=SUPASAI-ODDS
 
 # Ensure Homebrew is loaded
 export PATH="/opt/homebrew/bin:$PATH"
@@ -122,3 +122,8 @@ rq() {
       ;;
   esac
 }
+
+# Added by Antigravity
+export PATH="/Users/skypart/.antigravity/antigravity/bin:$PATH"
+
+alias cc="claude --continue"

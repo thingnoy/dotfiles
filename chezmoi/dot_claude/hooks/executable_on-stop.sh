@@ -26,6 +26,6 @@ if [ -f "$LOCK" ] && kill -0 "$(cat "$LOCK" 2>/dev/null)" 2>/dev/null; then
   exit 0
 fi
 
-say "[[volm 0.3]] ${PHRASES[$RANDOM_INDEX]}" &
+say "[[volm 0.8]] ${PHRASES[$RANDOM_INDEX]}" &
 echo $! > "$LOCK"
 exit 0
