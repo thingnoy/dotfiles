@@ -1,0 +1,178 @@
+{
+  "agentPushNotifEnabled": true,
+  "effortLevel": "xhigh",
+  "enabledMcpjsonServers": [
+    "playcanvas",
+    "blender"
+  ],
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "repo": "anthropics/claude-code",
+        "source": "github"
+      }
+    },
+    "claudeclaw": {
+      "source": {
+        "repo": "moazbuilds/claudeclaw",
+        "source": "github"
+      }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "bash /Users/skypart/.claude/hooks/on-notification.sh",
+            "type": "command"
+          },
+          {
+            "command": "CLAUDE_HOOK_EVENT=Notification bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "CLAUDE_HOOK_EVENT=PostToolUse bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "CLAUDE_HOOK_EVENT=PreToolUse bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "command": "rtk hook claude",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash /Users/skypart/.claude/hooks/on-session-start.sh",
+            "type": "command"
+          },
+          {
+            "command": "CLAUDE_HOOK_EVENT=SessionStart bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          },
+          {
+            "command": "bash /Users/skypart/.claude/hooks/patch-oracle-skills.sh",
+            "type": "command"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/skypart/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "python3 /Users/skypart/.claude/hooks/pre-claim-gate.py",
+            "statusMessage": "pre-claim gate",
+            "type": "command"
+          },
+          {
+            "command": "bash /Users/skypart/.claude/hooks/oracle-reindex.sh",
+            "type": "command"
+          },
+          {
+            "command": "CLAUDE_HOOK_EVENT=Stop bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "command": "CLAUDE_HOOK_EVENT=SubagentStart bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "bash /Users/skypart/.claude/hooks/auto-scale.sh",
+            "type": "command"
+          },
+          {
+            "command": "CLAUDE_HOOK_EVENT=UserPromptSubmit bash /Users/skypart/.claude/hooks/feed-log.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "claude-fable-5[1m]",
+  "permissions": {
+    "allow": [
+      "Bash(npm *)",
+      "Bash(bun *)",
+      "Bash(cargo *)",
+      "Bash(maw *)",
+      "Read",
+      "Glob",
+      "Grep"
+    ]
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "command": "bash /Users/skypart/.claude/statusline-command.sh",
+    "type": "command"
+  },
+  "theme": "dark-daltonized",
+  "tui": "fullscreen",
+  "voiceEnabled": true
+}
