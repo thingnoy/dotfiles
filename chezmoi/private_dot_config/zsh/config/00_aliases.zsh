@@ -43,7 +43,7 @@ alias work="cd ~/projects/workspace"
 
 # Claude
 alias c="claude --dangerously-skip-permissions"
-alias cc="claude --continue"
+alias cc="claude --continue --dangerously-skip-permissions"
 alias shh="touch ~/.claude/mute && echo 'muted'"
 alias speak="rm -f ~/.claude/mute && echo 'unmuted'"
 
