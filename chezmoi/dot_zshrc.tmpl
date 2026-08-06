@@ -7,7 +7,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:${HOME}/.local/bin"
 
 # Chezmoi cached variables
-export CM_computer_name=SUPASAI-ODDS
+export CM_computer_name={{ .computer_name }}
 
 # Ensure Homebrew is loaded
 export PATH="/opt/homebrew/bin:$PATH"
@@ -25,18 +25,13 @@ eval "$(zoxide init zsh --hook prompt)"
 
 # Homebrew-installed ASDF
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-export PATH="$PATH:$(yarn global bin)"
+export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$HOME/.bun/bin:$PATH"
 
 
-# --------------------------------
-# iTerm2 + tmux auto-attach
-# --------------------------------
-if [[ "$TERM_PROGRAM" == "iTerm.app" ]] && [[ -z "$TMUX" ]]; then
-  if [[ "$ITERM_PROFILE" == "Hotkey Window" ]]; then
-    tmux -CC new-session -As hotkey
-  fi
-fi
+# tmux auto-attach lives in the "Hotkey Window" profile's Command
+# (Settings > Profiles > General > Command: ~/.tmux/hotkey-attach.sh).
+# Running `tmux -CC` from here breaks iTerm2 session restoration.
 
 # --------------------------------
 # MISCELLENOUS
@@ -126,4 +121,25 @@ rq() {
 # Added by Antigravity
 export PATH="/Users/skypart/.antigravity/antigravity/bin:$PATH"
 
-alias cc="claude --continue"
+# Auto-rename tmux window to current directory name
+if [ -n "$TMUX" ]; then
+  function _tmux_rename_window() {
+    tmux rename-window "$(basename "$PWD")"
+  }
+  chpwd_functions+=(_tmux_rename_window)
+  _tmux_rename_window
+fi
+
+# Secrets (API tokens etc.)
+[[ -f $HOME/.config/secrets.env ]] && source $HOME/.config/secrets.env
+
+# Oracle vault path
+export ORACLE_VAULT_PATH="$HOME/projects/koki-oracle"
+
+
+# Added by Antigravity IDE
+export PATH="/Users/skypart/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/skypart/.local/bin:$PATH"

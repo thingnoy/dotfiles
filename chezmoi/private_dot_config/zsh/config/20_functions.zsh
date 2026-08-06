@@ -27,3 +27,11 @@ y() {
 }
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+
+# pj — project jumper: fzf across ~/projects (own work) + ghq tree (clones)
+pj() {
+  local dir
+  dir=$( { ls -d "$HOME"/projects/*/ 2>/dev/null | grep -v '_archive'; ghq list --full-path 2>/dev/null; } \
+    | sed 's|/$||' | fzf --prompt='project> ' --preview 'ls {}' ) || return
+  cd "$dir"
+}
