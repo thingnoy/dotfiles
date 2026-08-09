@@ -34,7 +34,7 @@ pj() {
   dir=$( { ls -d "$HOME"/projects/*/ "$HOME"/projects/devspace/*/ "$HOME"/projects/workspace/*/*/ 2>/dev/null; \
            ghq list --full-path 2>/dev/null; } \
     | sed 's|/*$||' \
-    | grep -vE '_archive|/projects/(devspace|workspace)$' \
+    | command grep -vE '_archive|/projects/(devspace|workspace)$' \
     | fzf --prompt='project> ' --preview 'ls {}' ) || return
   cd "$dir"
 }
