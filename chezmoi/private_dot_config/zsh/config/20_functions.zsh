@@ -22,19 +22,31 @@ n() {
   fi
 }
 
+# y — yazi with cd-on-quit
 y() {
-  n $@
+  local tmp cwd
+  tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 
-# pj — project jumper: fzf across ~/projects (own work, incl. devspace/ + workspace/<org>/) + ghq tree (clones)
-pj() {
+# ghq + fzf: jump to any cloned repo, plus own work under ~/projects (incl. devspace/ + workspace/<org>/)
+# usage: `g` for picker, `g backend` to pre-filter; right panel previews the repo
+# picker logic lives in ~/.local/bin/g-pick (shareable with e.g. a yazi keybinding)
+g() {
   local dir
-  dir=$( { ls -d "$HOME"/projects/*/ "$HOME"/projects/devspace/*/ "$HOME"/projects/workspace/*/*/ 2>/dev/null; \
-           ghq list --full-path 2>/dev/null; } \
-    | sed 's|/*$||' \
-    | command grep -vE '_archive|/projects/(devspace|workspace)$' \
-    | fzf --prompt='project> ' --preview 'ls {}' ) || return
+  dir=$(g-pick "$1") || return
   cd "$dir"
+}
+
+# same picker, but open the repo in yazi instead of cd
+gy() {
+  local dir
+  dir=$(g-pick "$1") || return
+  yazi "$dir"
 }
