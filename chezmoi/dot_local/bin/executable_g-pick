@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# shared repo picker: ~/projects (own work, incl. devspace/ + workspace/<org>/) + ghq tree (clones)
+# prints the chosen dir on stdout; $1 pre-fills the fzf query. non-zero exit = aborted.
+{ ls -d "$HOME"/projects/*/ "$HOME"/projects/devspace/*/ "$HOME"/projects/workspace/*/*/ 2>/dev/null
+  ghq list --full-path 2>/dev/null
+} | sed 's|/*$||' \
+  | grep -vE '_archive|/projects/(devspace|workspace)$' \
+  | while IFS= read -r d; do
+      if [ -f "$d/.git/index" ]; then printf '%s/.git/index\n' "$d"; else printf '%s\n' "$d"; fi
+    done \
+  | tr '\n' '\0' | xargs -0 stat -f '%m %N' 2>/dev/null \
+  | sort -rn \
+  | sed 's|/\.git/index$||' \
+  | awk -v home="$HOME" '{
+      full = $0; sub(/^[0-9]+ /, "", full)
+      name = full; sub(/.*\//, "", name)
+      ctx  = substr(full, 1, length(full) - length(name) - 1)
+      sub("^" home "/", "", ctx); sub(/^projects\/?/, "", ctx); sub(/^ghq\//, "", ctx)
+      printf "%s\t\033[2m%s\033[0m\t%s\n", name, ctx, full
+    }' \
+  | fzf --prompt='project> ' --query "${1-}" \
+        --ansi --delimiter='\t' --with-nth='{1}  {2}' --accept-nth=3 \
+        --tiebreak=index --preview 'ls {3}'
