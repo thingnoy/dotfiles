@@ -97,6 +97,10 @@
           {
             "command": "bash /Users/skypart/.claude/hooks/patch-oracle-skills.sh",
             "type": "command"
+          },
+          {
+            "command": "bash /Users/skypart/.claude/hooks/tmux-pane-session.sh",
+            "type": "command"
           }
         ]
       },
@@ -150,12 +154,16 @@
           {
             "command": "CLAUDE_HOOK_EVENT=UserPromptSubmit bash /Users/skypart/.claude/hooks/feed-log.sh",
             "type": "command"
+          },
+          {
+            "command": "bash /Users/skypart/.claude/hooks/tmux-pane-session.sh",
+            "type": "command"
           }
         ]
       }
     ]
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash(npm *)",
