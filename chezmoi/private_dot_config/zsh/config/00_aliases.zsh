@@ -50,6 +50,7 @@ alias speak="rm -f ~/.claude/mute && echo 'unmuted'"
 # Misc
 alias .="cd .."
 alias active-sims="xcrun simctl list 'devices' 'booted'"
+alias kill-sims="xcrun simctl shutdown all"
 alias cl="clear"
 alias ip="curl -s ipinfo.io/ip"
 alias reload="exec $SHELL -l"
